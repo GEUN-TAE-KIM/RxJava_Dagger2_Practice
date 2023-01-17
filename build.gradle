@@ -8,3 +8,8 @@ plugins {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    glideVersion = '4.12.0'
+    retrofitVersion = '2.9.0'
+}
