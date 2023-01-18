@@ -1,11 +1,12 @@
 package jp.co.archive_asia.rxjava_dagger2_practice.view
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import jp.co.archive_asia.rxjava_dagger2_practice.databinding.ItemCountryBinding
 import jp.co.archive_asia.rxjava_dagger2_practice.model.Country
+import jp.co.archive_asia.rxjava_dagger2_practice.util.getProgressDrawable
+import jp.co.archive_asia.rxjava_dagger2_practice.util.loadImage
 
 class CountryListAdapter(var countries: ArrayList<Country>) :
     RecyclerView.Adapter<CountryListAdapter.CountryViewHolder>() {
@@ -27,8 +28,12 @@ class CountryListAdapter(var countries: ArrayList<Country>) :
     class CountryViewHolder(private val binding: ItemCountryBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(country: Country?) {
-            binding.name.text = country.toString()
+
+
+        fun bind(country: Country) {
+            binding.data = country
+            binding.executePendingBindings()
+            binding.imageView.loadImage(country.flag)
         }
     }
 
