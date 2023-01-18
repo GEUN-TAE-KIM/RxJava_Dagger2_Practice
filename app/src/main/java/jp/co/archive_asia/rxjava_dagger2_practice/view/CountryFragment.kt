@@ -28,6 +28,11 @@ class CountryFragment : Fragment() {
 
         binding.lifecycleOwner = viewLifecycleOwner
         setListAdapter()
+
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            binding.swipeRefreshLayout.isRefreshing = false
+            setListAdapter()
+        }
     }
 
     private fun setListAdapter() {
@@ -36,6 +41,7 @@ class CountryFragment : Fragment() {
         binding.countriesList.adapter = countriesAdapter
 
         viewModel.countries.observe(viewLifecycleOwner) { countries ->
+            binding.countriesList.visibility = View.VISIBLE
             countries?.let { countriesAdapter.updateCountries(it) }
         }
 

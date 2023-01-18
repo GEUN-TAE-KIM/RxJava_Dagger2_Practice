@@ -63,6 +63,8 @@ dependencies {
 
     //RxJava
     implementation "io.reactivex.rxjava3:rxjava:3.1.5"
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    implementation "com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0"
 
     //Swiperefreshlayout
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
@@ -74,4 +76,10 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:2.5.1"
     implementation "androidx.navigation:navigation-ui-ktx:2.5.1"
 
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
+
+    // LifeCycle
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
 }
