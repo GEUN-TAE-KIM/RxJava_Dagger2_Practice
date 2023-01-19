@@ -1,19 +1,18 @@
 package jp.co.archive_asia.rxjava_dagger2_practice.model
 
-import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import io.reactivex.rxjava3.core.Single
+import jp.co.archive_asia.rxjava_dagger2_practice.di.DaggerApiComponent
 import jp.co.archive_asia.rxjava_dagger2_practice.network.CountriesApi
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
 class CountriesService {
 
-    private val api : CountriesApi = Retrofit.Builder()
-        .baseUrl("https://raw.githubusercontent.com")
-        .addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-        .build()
-        .create(CountriesApi::class.java)
+    @Inject
+    lateinit var api : CountriesApi
+
+    init {
+        DaggerApiComponent.create().inject(this)
+    }
 
     fun getCountries(): Single<List<Country>> {
         return api.getCountries()
